@@ -7,7 +7,7 @@
 		margin: 0;
 		font-family: "Lato", sans-serif;
 		}
-	.topbar
+	.topBar
 		{
 		height:100px;
 		width: 50px;
@@ -28,7 +28,7 @@
 	.sidebar
 		{
 		top: 0;
-                left: 45%;
+                left: 0;
 		margin: 0;
 		padding: 0;
 		border: 0;
@@ -70,9 +70,12 @@
 		}
 	div.mainContent
 		{
+		top: 32px;
 		margin-left: 300px;
 		padding: 1px 16px;
 		height: 100%;
+		width: 100%;
+		position: fixed;
 		}
 	@media screen and (max-width: 700px)
 		{
@@ -82,7 +85,7 @@
 			height: auto;
 			position: relative;
 			}
-		.sidebar a {flaot: left;}
+		.sidebar a {float: left;}
 		div.mainContent {margin-left: 0;}
 		}
 	@media screen and (max-width: 400px)
@@ -112,9 +115,10 @@
 			{
 			optSubList.style.maxHeight = 115 + "px";
 			}
-		else if (optSubList.style.maxHeight && element.attributes["name"].value !== "SelData" )
+                else if (element.attributes["name"].value !== "SelData" )
+<!--		else if (optSubList.style.maxHeight && element.attributes["name"].value !== "SelData" )-->
                         {
-                        optSubList.style.maxHeight = "null";
+                        optSubList.style.maxHeight = "0 px";
                         }
 		}
 </script>
@@ -126,7 +130,7 @@
 	<hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
 	<a name="Home" class="optionList active" onClick="makeActive(this)" href="http://www.bbc.co.uk/news" target="contentFrame"> Home</a>
         <hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
-        <p id="SelData" name="SelData" class="optionList" onClick="makeActive(this)"> Sport</p>
+        <a id="SelData" name="SelData" class="optionList" onClick="makeActive(this)" target="contentFrame"> Sport</a>
         <hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
         <div class="optionSubList" id="optionSubList">
         	<a style="padding-left:15px" name="BBCSport" class="optionList" onClick="makeActive(this)" href="http://www.bbc.co.uk/sport" target="contentFrame"> Sport</a>
@@ -139,7 +143,7 @@
 </div>
 
 <div id="main" class="mainContent">
-	<iframe src="" id="contentFrame" name="contentFrame" style="border: none;"><iframe>
+	<iframe src="" id="contentFrame" name="contentFrame" width="100%" height="100%" style="border: none;"></iframe>
 </div>
 
 </body>
