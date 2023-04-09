@@ -1,1 +1,147 @@
-Hello World
+<!DOCTYPE html>
+<head>
+<title> Command and Control Centre </title>
+<style>
+	body 
+   		{
+		margin: 0;
+		font-family: "Lato", sans-serif;
+		}
+	.topbar
+		{
+		height:100px;
+		width: 50px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		}
+	.titleBar
+		{
+		top: 0;
+		left: 45%;
+		color: black;
+		position: fixed;
+		vertical-align: top;
+		font-family: "Lato", sans-serif;
+		font-size: 25px;
+		}
+	.sidebar
+		{
+		top: 0;
+                left: 45%;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		width: 300px;
+		background-color: #333;
+		position: fixed;
+		height: 100%;
+		overflow: auto;
+		}
+	.sidebar a
+		{
+		display: block;
+		color: white;
+		padding: 15px;
+		text-decoration: none;
+		}
+	.sidebar a.active
+		{
+		background-color: #00B087;
+		color: white;
+		}
+	.optionList
+		{
+		background-color: #333;
+ 		color: white;
+		}
+	.sidebar a:hover:not(.active)
+		{
+		background-color: #f1f1f1;
+		color: black;
+		}
+	.optionSubList
+		{
+		padding: 0 18px;
+		max-height: 0px;
+		overflow: hidden;
+		transition: max-height 0.2s ease-out;
+		background-color: #333;
+		}
+	div.mainContent
+		{
+		margin-left: 300px;
+		padding: 1px 16px;
+		height: 100%;
+		}
+	@media screen and (max-width: 700px)
+		{
+		.sidebar
+			{
+			width: 100%;
+			height: auto;
+			position: relative;
+			}
+		.sidebar a {flaot: left;}
+		div.mainContent {margin-left: 0;}
+		}
+	@media screen and (max-width: 400px)
+		{
+		.sidebar a
+			{
+			text-align: center;
+			float: none;
+			}
+		}
+</style>
+
+<script>
+	function makeActive(element)
+		{
+		var sidebarOptions = document.getElementsByClassName("optionList active");
+		var optSubList = document.getElementById("optionSubList");
+		for (var loopVar = 0; loopVar < sidebarOptions.length; loopVar++)
+			{
+			if (sidebarOptions[loopVar].className === "optionList active")
+				{
+				sidebarOptions[loopVar].className = "optionList";
+				}
+			}
+		element.className += " active";
+		if (element.attributes["name"].value === "SelData" )
+			{
+			optSubList.style.maxHeight = 115 + "px";
+			}
+		else if (optSubList.style.maxHeight && element.attributes["name"].value !== "SelData" )
+                        {
+                        optSubList.style.maxHeight = "null";
+                        }
+		}
+</script>
+
+<body>
+<div id="myTitleBar" class="titleBar">Command and Control Centre</div>
+
+<div id="sidebar" class="sidebar" style="background: #333;">
+	<hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
+	<a name="Home" class="optionList active" onClick="makeActive(this)" href="http://www.bbc.co.uk/news" target="contentFrame"> Home</a>
+        <hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
+        <p id="SelData" name="SelData" class="optionList" onClick="makeActive(this)"> Sport</p>
+        <hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
+        <div class="optionSubList" id="optionSubList">
+        	<a style="padding-left:15px" name="BBCSport" class="optionList" onClick="makeActive(this)" href="http://www.bbc.co.uk/sport" target="contentFrame"> Sport</a>
+        	<hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
+        	<a style="padding-left:15px" name="BBCFootie" class="optionList" onClick="makeActive(this)" href="http://www.bbc.co.uk/football" target="contentFrame"> Football</a>
+	        <hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
+	</div>
+        <a name="Weather" class="optionList" onClick="makeActive(this)" href="http://www.bbc.co.uk/weather" target="contentFrame"> Weather</a>
+	<hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
+</div>
+
+<div> id="main" class="mainContent">
+	<iframe src="" id="contentFrame" name="contentFrame" style="border: none;"><iframe>
+</div>
+
+</body>
+</html>
+
