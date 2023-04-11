@@ -1,1 +1,83 @@
+<!DOCTYPE html>
 <html>
+
+<head>
+<style>
+    .textContent
+		{
+		top: 0;
+		left: 0;
+		color: black;
+		position: fixed;
+		vertical-align: top;
+		font-family: "Lato", sans-serif;
+		font-size: 25px;
+		}
+    .CPUChart_DIV
+        {
+        width: 100%;
+		top: 75px;
+		left: 330px;        
+		position: fixed;
+		color: black;		
+		font-family: "Lato", sans-serif;
+		font-size: 25px;
+		}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+
+<body>
+
+<div id="TextChart" class="textContent">Command and Control Centre Charts </div>
+
+<div id="CPUChart_DIV" class="CPUChart_DIV">
+<canvas id="CPUChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+<!-- var xValues = [50,60,70,80,90,100,110,120,130,140,150]; -->
+var xValues = ['2021-11-06 23:39:30','2021-11-07 01:00:28','2021-11-07 09:00:28'];
+var yValues = [7,10,15];
+
+new Chart("CPUChart", 
+{
+    type: "line",
+    data: 
+    {
+        labels: xValues,
+        datasets: 
+        [
+            {
+            fill: false,
+            lineTension: 0,
+            backgroundColor: "rgba(0,0,255,1)",
+            borderColor: "rgba(0,0,255,0.1)",
+            data: yValues
+            }
+        ]
+    },
+    options: 
+    {
+        legend: {display: false},
+        title: 
+        {
+            display: true,
+            text: "Micro Dev",
+            fontSize: 16
+        },
+        scales: 
+        {
+            yAxes: [{ticks: {min: 0, max:100}}],
+            x: {min: '2021-11-07 00:00:00',},
+            xAxes:  [{ticks: {autoSkip: false, maxRotation: 90, minRotation: 90 }}]
+        }
+    }
+}
+);
+</script>
+
+</div>
+
+</body>
+</html>
