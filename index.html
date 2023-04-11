@@ -28,7 +28,7 @@
 	.sidebar
 		{
 		top: 0;
-                left: 0;
+        	left: 0;
 		margin: 0;
 		padding: 0;
 		border: 0;
@@ -111,34 +111,61 @@
 				}
 			}
 		element.className += " active";
-		if (element.attributes["name"].value === "SelData" )
+        
+        if (element.attributes["name"].value === "SelData")
 			{
 			optSubList.style.maxHeight = 115 + "px";
-			}
-                else if (element.attributes["name"].value !== "SelData" )
-<!--		else if (optSubList.style.maxHeight && element.attributes["name"].value !== "SelData" )-->
-                        {
-                        optSubList.style.maxHeight = "0 px";
-                        }
+			}      
+		else if (element.attributes["name"].value != "SelData" )
+            {
+            document.getElementById("optionSubList").style.maxHeight = "0px";
+            }  
 		}
-</script>
+    const distPath = '.';
+    function getDirectories(distPath) 
+    {
+        var fs = require('fs');
+        return fs.readdirSync(distPath).filter
+            (
+            function (file) 
+                {
+                return fs.statSync(distPath + '/' + file).isDirectory();
+                }
+            ).filter
+                (
+                function (distPath) 
+                    {
+                    return distPath != 'test' && distPath != 'offline';
+                    }
+                );                
+                document.getElementById("contentFrame").innerHTML = store;
+    }
+    let articlePath = getDirectories(distPath);    
+        
+        
+        
+        
+
+
+ </script>
+
 
 <body>
 <div id="myTitleBar" class="titleBar">Command and Control Centre</div>
 
 <div id="sidebar" class="sidebar" style="background: #333;">
 	<hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
-	<a name="Home" class="optionList active" onClick="makeActive(this)" href="http://www.bbc.co.uk/news" target="contentFrame"> Home</a>
+	<a name="Home" class="optionList active" onClick="makeActive(this)" href="" target="contentFrame"> Home</a>
         <hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
-        <a id="SelData" name="SelData" class="optionList" onClick="makeActive(this)" target="contentFrame"> Sport</a>
+        <a id="SelData" name="SelData" class="optionList" onClick="makeActive(this);" target="contentFrame"> Sport</a>
         <hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
         <div class="optionSubList" id="optionSubList">
-        	<a style="padding-left:15px" name="BBCSport" class="optionList" onClick="makeActive(this)" href="http://www.bbc.co.uk/sport" target="contentFrame"> Sport</a>
+        	<a style="padding-left:15px" name="CPUChart" class="optionList" onClick="makeActive(this)" href="SystemCPU.html" target="contentFrame"> CPU Charts</a>
         	<hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
         	<a style="padding-left:15px" name="BBCFootie" class="optionList" onClick="makeActive(this)" href="http://www.bbc.co.uk/football" target="contentFrame"> Football</a>
 	        <hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
-	</div>
-        <a name="Weather" class="optionList" onClick="makeActive(this)" href="http://www.bbc.co.uk/weather" target="contentFrame"> Weather</a>
+	    </div>
+    <a name="Weather" class="optionList" onClick="makeActive(this); List('.')" href="http://www.bbc.co.uk/weather" target="contentFrame"> Weather</a>
 	<hr style="height: 2px; border: 0; padding: 0; margin: 0; color: #00b087; background-color: #00b087;">
 </div>
 
@@ -148,4 +175,3 @@
 
 </body>
 </html>
-
